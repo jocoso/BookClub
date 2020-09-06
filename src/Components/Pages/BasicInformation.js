@@ -69,7 +69,7 @@ const StyledPage = styled.div`
         width: 17rem;
         float: right;
         position: absolute;
-        left: 90%;
+        left: 100%;
         top: 7rem;
         transform: translate(-100%, 0);
     }
