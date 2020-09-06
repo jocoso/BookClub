@@ -14,10 +14,6 @@ if(!dev) {
   app.use(morgan('common'));
 
   app.use(express.static(path.resolve(__dirname, 'build')));
-  
-  app.get('/', (req, res) => {
-    res.send("Hellow world!");
-  });
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname,'build', 'index.html'));
