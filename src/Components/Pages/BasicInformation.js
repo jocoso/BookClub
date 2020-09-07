@@ -5,9 +5,9 @@ export default function BasicInformationPage( { bookData } ) {
     return (
         <StyledPage>
             <p className="title">{bookData.title}</p>
+            <div className="subtitle"> [basic information] </div>
             <img src={bookData.img} alt="book cover" />
             <table>
-                <caption> [basic information] </caption>
                 <tbody>
                     <tr>
                         <td>author:</td>
@@ -61,29 +61,17 @@ const StyledPage = styled.div`
     margin: 0 auto;
     
     table {
-        width: 100%;
+        width: 60%;
         border-collapse: collapse;
     }
 
     img {
-        width: 17rem;
+        width: 40%;
         float: right;
-        position: absolute;
-        left: 100%;
-        top: 7rem;
-        transform: translate(-100%, 0);
-    }
-
-    table caption {
-       background: black;
-       color: white;
-       text-transform: capitalize;
-       font-size: 1.3rem;
     }
 
     tr td {
         text-align: left;
-        padding: 2rem;
     }
 
     td {
@@ -93,11 +81,12 @@ const StyledPage = styled.div`
     tr td:first-child {
         font-weight: bold;
         text-transform: capitalize;
+        font-size: 0.65vw;
     }
 
     tr td:nth-child(2) {
         font-family: sans-serif;
-        font-size: 0.9rem;
+        font-size: 0.65vw;
         font-weight: light;
     }
 
@@ -106,7 +95,14 @@ const StyledPage = styled.div`
         font-family: 'Overpass', sans-serif;
         font-weight: bold;
         text-align: center;
-        font-size: 1.3rem;
+        font-size: 1vw;
         text-decoration: underline;
+    }
+
+    .subtitle {
+        background: black;
+        color: white;
+        text-transform: capitalize;
+        font-size: 1vw;
     }
 `;
