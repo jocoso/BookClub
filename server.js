@@ -21,6 +21,7 @@ if(!dev) {
 }
 
 if(dev) {
+  app.set("port", PORT);
   app.use(morgan('dev'));
   app.use(express.static(path.resolve(__dirname, 'build')));
   app.get('*', (req, res) => {
