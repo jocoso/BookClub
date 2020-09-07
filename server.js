@@ -10,7 +10,6 @@ const dev = app.get('env') !== 'production';
 if(!dev) {
   app.disable('x-powered-by');
   app.use(compression());
-  app.use(morgan('common'));
 
   app.use(express.static(path.resolve(__dirname, 'build')));
 
