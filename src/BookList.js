@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import BookCard from "./Components/BookCard/BookCard";
-import Modal from "./Components/Modal/index";
+import ModalComponent from "./Components/Modal/index";
 import BasicInformationPage from "./Components/Pages/BasicInformation";
 
 class BookList extends Component {
@@ -22,7 +22,13 @@ class BookList extends Component {
                 ],
                 synopsis: 
                 "In an oppressive future, a fireman whose duty is to destroy all books begins to question his task.",
-                img: "https://images-na.ssl-images-amazon.com/images/I/71ub2nWheJL.jpg"
+                img: "https://images-na.ssl-images-amazon.com/images/I/71ub2nWheJL.jpg",
+                theme: {
+                    titleBg: "#d93d25",
+                    titleColor: "#ebe1d0",
+                    background: "#0a0a0a",
+                    contentColor: "#d93d25"
+                }
             },
             {
                 id: 1,
@@ -37,7 +43,13 @@ class BookList extends Component {
                 ],
                 synopsis:
                 "What if Wonderland was in peril and Alice was very, very late",
-                img: "https://i1.wp.com/books.disney.com/content/uploads/2020/05/TT_Unbirthday_CVR.jpg?fit=1720%2C2550&ssl=1"
+                img: "https://i1.wp.com/books.disney.com/content/uploads/2020/05/TT_Unbirthday_CVR.jpg?fit=1720%2C2550&ssl=1",
+                theme: {
+                    titleBg: "#631c26",
+                    titleColor: "#ae343b",
+                    background: "#0b0a0a",
+                    contentColor: "#c4bf72"
+                }
 
             },
         ]
@@ -49,9 +61,9 @@ class BookList extends Component {
 
     openBookModal =  id => {
         const book = this.searchBook(id);
-       
+        console.log(book.theme.titleBg);
         this.setState(
-            {modalContent: <BasicInformationPage bookData={book} />}, () => this.setState({modalHidden: false})
+            {modalContent: <BasicInformationPage bookData={book} theme={book.theme} />}, () => this.setState({modalHidden: false})
         );
     }
 
@@ -67,12 +79,12 @@ class BookList extends Component {
     render() {
         return(
             <div><h1>Book List</h1>
-            {<Modal 
+            {<ModalComponent 
                 handleClose={this.closeBookModal}
                 hidden={this.state.modalHidden}    
             >
                 {this.state.modalContent}    
-            </Modal>}
+            </ModalComponent>}
                 {this.state.books.map(
                     book => {
                         return <BookCard 

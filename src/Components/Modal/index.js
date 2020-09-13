@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import CircleButton from '../CircleButton/index';
 import "../../App.css";
 
 export default function ModalComponent( { handleClose, hidden, children } ) {
@@ -9,10 +8,6 @@ export default function ModalComponent( { handleClose, hidden, children } ) {
             <section className="modal-main column">
                 <button className="close-button" onClick={ handleClose }> x </button>
                 <div className="row">{children}</div>
-                <div className="footer row">
-                    <CircleButton radius={2.5}> {"<"} </CircleButton>
-                    <CircleButton radius={2.5}> {">"} </CircleButton>
-                </div>
             </section>
         </Modal>
     )
@@ -23,14 +18,15 @@ const Modal = styled.div `
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.6);
     display: ${ props => props.hidden ? "none" : "block" };
-
+    
     .modal-main {
         position: fixed;
         background: white;
-        width: 90%;
-        height: 90%;
+        min-height: value;
+        width: 50%;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -44,20 +40,4 @@ const Modal = styled.div `
         left: 100%;
         transform: translate(-120%, 0);
     }
-
-    .footer{
-        position: absolute;
-        background: #A9A9A9;
-        display: block;
-        width: 100%;
-        bottom: 0;
-        border-radius: 0 0 0.6rem 0.6rem;
-    }
-
-    .footer button {
-        position: relative;
-        left: 100%;
-        transform: translate(-220%, 0);
-    }
-
 `;

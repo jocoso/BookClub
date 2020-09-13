@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import CircleButton from '../CircleButton/index';
 
-export default function BasicInformationPage( { bookData } ) {
+export default function BasicInformationPage( { bookData, theme } ) {
     return (
-        <StyledPage className="row">
+        <StyledPage theme={theme}>
             <p className="title row">{bookData.title}</p>
             <div className="subtitle row"> [basic information] </div>
             <div className="row content">
@@ -13,7 +14,6 @@ export default function BasicInformationPage( { bookData } ) {
                             <td>author:</td>
                             <td>{bookData.author}</td>
                         </tr>
-
 
                         <tr>
                             <td>genre:</td>
@@ -57,6 +57,10 @@ export default function BasicInformationPage( { bookData } ) {
 
                 <img className="column" src={bookData.img} alt="book cover" />
             </div>
+            <div className="row footer">
+                <CircleButton radius={2.5}> {"<"} </CircleButton>
+                <CircleButton radius={2.5}> {">"} </CircleButton>
+            </div>
         </StyledPage>
     )
 }
@@ -65,14 +69,17 @@ const StyledPage = styled.div`
     margin: 0 auto;
     height: 30%;
     
-    table {
+    .content table {
         width: 60%;
         text-align: center;
         overflow: scroll;
     }
 
-    img {
+    .content img {
         width: 40%;
+        display: block;
+        margin-top: auto;
+        margin-bottom: auto;
     }
 
     tr td {
@@ -103,6 +110,10 @@ const StyledPage = styled.div`
         font-size: 2vw;
         text-decoration: underline;
         text-align: center;
+        margin: 0;
+        padding: 0;
+        background: ${props => props.theme.titleBg ? props.theme.titleBg : "gray"};
+        color: ${props => props.theme.titleColor ? props.theme.titleColor : "black"};
     }
 
     .subtitle {
@@ -114,6 +125,22 @@ const StyledPage = styled.div`
     }
 
     .content {
-        
+        background: ${props => props.theme.background ? props.theme.background : "white" };
+        color: ${props => props.theme.contentColor ? props.theme.contentColor : "black"};
+        padding: 10px;
+    }
+
+    .footer{
+        background: ${props => props.theme.titleBg ? props.theme.titleBg : "gray"};
+        display: block;
+        width: 100%;
+        border-radius: 0 0 0.6rem 0.6rem;
+    }
+
+    .footer button {
+        position: relative;
+        left: 100%;
+        transform: translate(-220%, 0);
+        background: ${props => props.theme.titleColor ? props.theme.titleColor : "black"};
     }
 `;
