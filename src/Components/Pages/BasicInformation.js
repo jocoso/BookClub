@@ -6,10 +6,8 @@ export default function BasicInformationPage( { bookData } ) {
         <StyledPage className="row">
             <p className="title row">{bookData.title}</p>
             <div className="subtitle row"> [basic information] </div>
-            
-
-            <div className="column">
-                <table>
+            <div className="row content">
+                <table className="column">
                     <tbody>
                         <tr>
                             <td>author:</td>
@@ -55,9 +53,10 @@ export default function BasicInformationPage( { bookData } ) {
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            
 
-            <img className="column" src={bookData.img} alt="book cover" />
+                <img className="column" src={bookData.img} alt="book cover" />
+            </div>
         </StyledPage>
     )
 }
@@ -67,13 +66,13 @@ const StyledPage = styled.div`
     height: 30%;
     
     table {
-        width: 100%;
+        width: 60%;
         text-align: center;
+        overflow: scroll;
     }
 
     img {
-        width: 50%;
-        float: right;
+        width: 40%;
     }
 
     tr td {
@@ -87,12 +86,12 @@ const StyledPage = styled.div`
     tr td:first-child {
         font-weight: bold;
         text-transform: capitalize;
-        font-size: 1vw;
+        font-size: 1.3vw;
     }
 
     tr td:nth-child(2) {
         font-family: sans-serif;
-        font-size: 1vw;
+        font-size: 1.3vw;
         font-weight: light;
     }
 
@@ -101,7 +100,7 @@ const StyledPage = styled.div`
         font-family: 'Overpass', sans-serif;
         font-weight: bold;
         text-align: center;
-        font-size: 1vw;
+        font-size: 2vw;
         text-decoration: underline;
         text-align: center;
     }
@@ -110,7 +109,11 @@ const StyledPage = styled.div`
         background: black;
         color: white;
         text-transform: capitalize;
-        font-size: 1vw;
+        font-size: 1.5vw;
         text-align: center;
+    }
+
+    .content {
+        
     }
 `;
